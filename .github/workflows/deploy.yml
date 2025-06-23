@@ -44,17 +44,8 @@ jobs:
         host: ${{ secrets.VPS_HOST }}
         username: ${{ secrets.VPS_USER }}
         key: ${{ secrets.VPS_SSH_KEY }}
-        source: "backend/*"
+        source: "backend/*,.env"
         target: "/home/${{ secrets.VPS_USER }}/magic-ninja"
-
-    - name: Deploy ENV to VPS via SSH
-      uses: appleboy/scp-action@v0.1.4
-      with:
-        host: ${{ secrets.VPS_HOST }}
-        username: ${{ secrets.VPS_USER }}
-        key: ${{ secrets.VPS_SSH_KEY }}
-        source: ".env"
-        target: "/home/${{ secrets.VPS_USER }}/magic-ninja/.env"
 
     - name: 🔄 Restart server over SSH
       uses: appleboy/ssh-action@v1.0.3
