@@ -30,6 +30,14 @@ jobs:
         rm -rf backend/dist
         cp -r frontend/dist backend/dist
 
+    - name: Create env file
+      run: |
+        echo "SERVER_PORT=${{ vars.SERVER_PORT }}" > .env
+        echo "SERVER_CARDFILE_PATH=${{ vars.SERVER_CARDFILE_PATH }}" >> .env
+        echo "SERVER_IMAGES_PATH=${{ vars.SERVER_IMAGES_PATH }}" >> .env
+        echo "CLIENT_API_PORT=${{ vars.CLIENT_API_PORT }}" >> .env
+        echo "CLIENT_API_BASE=${{ vars.CLIENT_API_BASE }}" >> .env
+
     - name: 🚀 Deploy to VPS via SSH
       uses: appleboy/scp-action@v0.1.4
       with:
@@ -38,14 +46,6 @@ jobs:
         key: ${{ secrets.VPS_SSH_KEY }}
         source: "backend/*"
         target: "/home/${{ secrets.VPS_USER }}/magic-ninja"
-
-    - name: Create env file
-      run: |
-        echo "SERVER_PORT=${{ vars.SERVER_PORT }}" >> /home/${{ secrets.VPS_USER }}/magic-ninja/.env
-        echo "SERVER_CARDFILE_PATH=${{ vars.SERVER_CARDFILE_PATH }}" >> /home/${{ secrets.VPS_USER }}/magic-ninja/.env
-        echo "SERVER_IMAGES_PATH=${{ vars.SERVER_IMAGES_PATH }}" >> /home/${{ secrets.VPS_USER }}/magic-ninja/.env
-        echo "CLIENT_API_PORT=${{ vars.CLIENT_API_PORT }}" >> /home/${{ secrets.VPS_USER }}/magic-ninja/.env
-        echo "CLIENT_API_BASE=${{ vars.CLIENT_API_BASE }}" >> /home/${{ secrets.VPS_USER }}/magic-ninja/.env
 
     - name: 🔄 Restart server over SSH
       uses: appleboy/ssh-action@v1.0.3
