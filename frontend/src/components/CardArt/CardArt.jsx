@@ -1,15 +1,17 @@
 import { useState } from "react";
 
 import './CardArt.css';
+import API from "../../services/api";
 
 export default function CardArt({cardData, editable, onFileAdd}) {
+  const api = new API();
   const [imageSrc, setImageSrc] = useState(getServerImageUrl(cardData));
 
   function getServerImageUrl(data) {
     let imageUrl = data?.imageUrl;
     if (!imageUrl) return null;
 
-    return `http://localhost:3000/images/${imageUrl}`;
+    return `${api.BASE_URL}/images/${imageUrl}`;
   }
 
   async function handleFileChange(e) {

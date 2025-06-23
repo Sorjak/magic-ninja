@@ -1,7 +1,7 @@
 
 
 export default class API {
-    BASE_URL = 'http://localhost:3000';
+    BASE_URL = `${import.meta.env.CLIENT_API_BASE}:${import.meta.env.CLIENT_API_PORT}`;
     API_URL = `${this.BASE_URL}/api`
 
     async fetchData(path) {

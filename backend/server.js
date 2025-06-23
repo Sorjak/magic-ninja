@@ -1,3 +1,4 @@
+const dotenv = require('dotenv');
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
@@ -5,8 +6,9 @@ const fs = require('node:fs');
 const { v4: uuidv4 } = require('uuid');
 const fileUpload = require('express-fileupload');
 
-const filePath = 'cards.json';
-const imagePath = 'images'
+dotenv.config({path: '../.env'});
+const filePath = process.env.SERVER_CARDFILE_PATH
+const imagePath =  process.env.SERVER_IMAGES_PATH
 
 if (!fs.existsSync(imagePath)){
     fs.mkdirSync(imagePath);
@@ -161,6 +163,6 @@ app.post('/api/upload', function(req, res) {
   });
 });
 
-app.listen(3001, () => {
-  console.log("Server is up on port", 3001);
+app.listen(process.env.SERVER_PORT, () => {
+  console.log("Server is up on port", process.env.SERVER_PORT);
 });
