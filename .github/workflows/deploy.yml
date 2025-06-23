@@ -17,6 +17,14 @@ jobs:
       with:
         node-version: '22'
 
+    - name: Create env file
+      run: |
+        echo "SERVER_PORT=${{ vars.SERVER_PORT }}" >> .env
+        echo "SERVER_CARDFILE_PATH=${{ vars.SERVER_CARDFILE_PATH }}" >> .env
+        echo "SERVER_IMAGES_PATH=${{ vars.SERVER_IMAGES_PATH }}" >> .env
+        echo "CLIENT_API_PORT=${{ vars.CLIENT_API_PORT }}" >> .env
+        echo "CLIENT_API_BASE=${{ vars.CLIENT_API_BASE }}" >> .env
+
     - name: 📦 Install frontend dependencies
       working-directory: ./frontend
       run: npm install
@@ -29,14 +37,6 @@ jobs:
       run: |
         rm -rf backend/dist
         cp -r frontend/dist backend/dist
-
-    - name: Create env file
-      run: |
-        echo "SERVER_PORT=${{ vars.SERVER_PORT }}" >> .env
-        echo "SERVER_CARDFILE_PATH=${{ vars.SERVER_CARDFILE_PATH }}" >> .env
-        echo "SERVER_IMAGES_PATH=${{ vars.SERVER_IMAGES_PATH }}" >> .env
-        echo "CLIENT_API_PORT=${{ vars.CLIENT_API_PORT }}" >> .env
-        echo "CLIENT_API_BASE=${{ vars.CLIENT_API_BASE }}" >> .env
 
     - name: Deploy to VPS via SSH
       uses: appleboy/scp-action@v0.1.4

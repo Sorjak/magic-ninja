@@ -164,5 +164,9 @@ app.post('/api/upload', function(req, res) {
 });
 
 app.listen(process.env.SERVER_PORT, () => {
-  console.log("Server is up on port", process.env.SERVER_PORT);
+  console.log("Server is up on port: ", process.env.SERVER_PORT);
+  console.log("Using: ", process.env.SERVER_CARDFILE_PATH);
+  console.log("Using: ", process.env.SERVER_IMAGES_PATH);
+  console.log("Using: ", process.env.CLIENT_API_BASE);
+  console.log("Using: ", process.env.CLIENT_API_PORT);
 });
