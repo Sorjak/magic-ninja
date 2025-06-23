@@ -46,7 +46,7 @@ jobs:
         username: ${{ secrets.VPS_USER }}
         key: ${{ secrets.VPS_SSH_KEY }}
         script: |
-          source /etc/profile
+          PATH=$PATH:/home/${{secrets.VPS_USER}}/.nvm/versions/node/v21.5.0/bin
           cd /home/${{ secrets.VPS_USER }}/magic-ninja/backend
           npm install
           pm2 restart "magic-ninja" || pm2 start server.js --name "magic-ninja"
