@@ -161,6 +161,6 @@ app.post('/api/upload', function(req, res) {
   });
 });
 
-app.listen(3000, () => {
-  console.log("Server is up on port", 3000);
+app.listen(3001, () => {
+  console.log("Server is up on port", 3001);
 });

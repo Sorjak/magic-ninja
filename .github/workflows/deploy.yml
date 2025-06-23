@@ -46,6 +46,6 @@ jobs:
         username: ${{ secrets.VPS_USER }}
         key: ${{ secrets.VPS_SSH_KEY }}
         script: |
-          cd /home/${{ secrets.VPS_USER }}/magic-ninja
+          cd /home/${{ secrets.VPS_USER }}/magic-ninja/backend
           npm install
           pm2 restart server.js || pm2 start server.js --name "magic-ninja"
