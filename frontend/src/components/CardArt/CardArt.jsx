@@ -19,14 +19,6 @@ export default function CardArt({cardData, editable, onFileAdd}) {
       return;
     }
 
-    // let formData = new FormData();
-    // let fileExt = file.name.split('.').pop();
-
-    // formData.append('imageFile', file, `${uploadId}.${fileExt}`);
-    // console.log(formData.get('imageFile'));
-    //Make a request to server and send formData
-    // let newCard = await api.uploadFile(formData);
-    // setCardData(newCard);
     let url = URL.createObjectURL(file);
     setImageSrc(url);
     onFileAdd(file);

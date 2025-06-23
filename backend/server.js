@@ -8,9 +8,13 @@ const fileUpload = require('express-fileupload');
 const filePath = 'cards.json';
 const imagePath = 'images'
 
+if (!fs.existsSync(imagePath)){
+    fs.mkdirSync(imagePath);
+}
+
 const app = express();
 
-app.use(express.static(path.join(__dirname, '../frontend/dist')));
+app.use(express.static(path.join(__dirname, './dist')));
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use(cors());
@@ -18,7 +22,7 @@ app.use(express.json());
 app.use(fileUpload());
 
 app.get([/^\/card(.*)/, '/rules', '/about'], (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
+    res.sendFile(path.join(__dirname, './dist', 'index.html'));
 });
 
 function getExistingData() {

@@ -11,8 +11,6 @@ export default function CardActions({cardData, imageFile, save, update, del, edi
   const api = new API()
   const navigate = useNavigate();
 
-  const [message, setMessage] = useState({text: "", type: ""});
-
   // CRUD functions to create, update and delete cards.
   async function createCard() {
     if (cardData == null) return;
@@ -54,20 +52,17 @@ export default function CardActions({cardData, imageFile, save, update, del, edi
   }
 
   async function uploadImage(uploadId) {
-    console.log(`uploading image with id ${uploadId}`);
     if (!uploadId) return;
 
     let formData = new FormData();
     let fileExt = imageFile.name.split('.').pop();
 
     formData.append('imageFile', imageFile, `${uploadId}.${fileExt}`);
-    console.log(formData.get('imageFile'));
 
     await api.uploadFile(formData);
   }
 
-  function showMessage(message, type='success') {
-    console.log(`Showing message ${message}`);
+  function showMessage(message) {
     toast(message);
   }
 
