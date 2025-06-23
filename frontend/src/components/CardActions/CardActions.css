@@ -1,0 +1,32 @@
+.card-actions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+  align-items: center;
+}
+
+.card-button {
+  background-color: #333;
+  color: #fff;
+  border: 2px solid #888;
+  border-radius: 6px;
+  padding: 6px 16px;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  margin: 0px 5px;
+}
+
+.card-button:hover {
+  background-color: #555;
+}
+
+.card-button:active {
+  transform: scale(0.98);
+}
+
+.card-id {
+  font-size: 10px;
+}

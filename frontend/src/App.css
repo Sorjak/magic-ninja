@@ -1,0 +1,17 @@
+.main-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.nav-link {
+  font-size: 18px;
+  padding: 0px 8px;
+  color: #eee;
+}
+
+.nav-link.active {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}

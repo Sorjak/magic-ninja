@@ -1,0 +1,90 @@
+.carousel-shell {
+  position: relative;
+  width: 375px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-wrapper {
+  position: relative;
+  width: 375px;
+  height: 523px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  overflow: hidden;
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+  gap: 8px;
+}
+
+.card-container {
+  flex-shrink: 0;
+  width: 375px;
+  height: 523px;
+}
+
+/* Arrow buttons */
+.arrow {
+  background: #eee;
+  color: #111;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 4px 10px;
+  z-index: 10;
+  border-radius: 6px;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.arrow:hover {
+  opacity: 1;
+}
+
+.left-arrow {
+  left: -60px;
+}
+
+.right-arrow {
+  right: -60px;
+}
+
+
+.card-list-info {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+  flex-direction: row;
+  align-items: center;
+}
+
+.edit-button {
+  background-color: #333;
+  color: #fff;
+  border: 2px solid #888;
+  border-radius: 6px;
+  padding: 6px 16px;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.edit-button:hover {
+  background-color: #555;
+}
+
+.edit-button:active {
+  transform: scale(0.98);
+}
+
+.card-count {
+  color: #fff;
+  padding: 0px 10px;
+}
+

@@ -1,0 +1,26 @@
+/* Artwork */
+.card-art {
+    width: 100%;
+    height: 190px;
+    background: #cfcfcf;
+    border: 1px solid #999;
+    text-align: center;
+    line-height: 190px;
+    font-weight: bold;
+    color: #555;
+    margin: 4px 0;
+    position: relative;
+}
+
+.card-art img {
+    width: 100%;
+    height: 100%;
+}
+
+.card-art input[type="file"] {
+    opacity: 0;
+    position: absolute;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}

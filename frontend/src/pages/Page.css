@@ -1,0 +1,12 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    max-width: 450px;
+}
+
+#rules-page, #about-page {
+    padding: 0px 20px;
+}

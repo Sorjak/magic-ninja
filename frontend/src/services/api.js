@@ -1,0 +1,63 @@
+
+
+export default class API {
+    BASE_URL = 'http://localhost:3000';
+    API_URL = `${this.BASE_URL}/api`
+
+    async fetchData(path) {
+        try {
+            const uri = `${this.API_URL}/${path}`;
+            const response = await fetch(uri);
+            if (!response.ok) {
+                throw new Error('Got non 200 response');
+            }
+            
+            return await response.json();
+
+        } catch (err) {
+            console.error(err);
+            return err;
+        }
+    }
+
+    async pushData(path, method, json) {
+        try {
+            const uri = `${this.API_URL}/${path}`;
+            const response = await fetch(uri, { 
+                method: method,
+                headers: {'Content-Type': 'application/json'},
+                body: json
+            });
+
+            if (!response.ok) {
+                throw new Error('Got non 200 response');
+            }
+
+            return await response.json();
+    
+        } catch (err) {
+            console.error(err);
+            return err;
+        }
+    }
+
+    async uploadFile(formData) {
+        try {
+            const uri = `${this.API_URL}/upload`;
+            const response = await fetch(uri, { 
+                method: 'POST',
+                body: formData
+            });
+
+            if (!response.ok) {
+                throw new Error('Got non 200 response');
+            }
+
+            return await response.json();
+    
+        } catch (err) {
+            console.error(err);
+            return err;
+        }
+    }
+}
