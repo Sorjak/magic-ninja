@@ -35,8 +35,9 @@ jobs:
 
     - name: 📁 Copy build to backend
       run: |
-        rm -rf backend/dist
-        cp -r frontend/dist backend/dist
+        rm -rf ./dist
+        cp -r frontend/dist ./dist
+        cp -r backend/* .
 
     - name: Deploy to VPS via SSH
       uses: appleboy/scp-action@v0.1.4
