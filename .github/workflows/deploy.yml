@@ -53,7 +53,7 @@ jobs:
         host: ${{ secrets.VPS_HOST }}
         username: ${{ secrets.VPS_USER }}
         key: ${{ secrets.VPS_SSH_KEY }}
-        strip_components: true
+        strip_components: 1
         script: |
           PATH=$PATH:/home/${{secrets.VPS_USER}}/.nvm/versions/node/v21.5.0/bin
           cd /srv/magic-ninja
