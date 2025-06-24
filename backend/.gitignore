@@ -2,3 +2,4 @@ cards.json
 node_modules
 images
 dist
+.env

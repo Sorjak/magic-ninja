@@ -6,7 +6,7 @@ const fs = require('node:fs');
 const { v4: uuidv4 } = require('uuid');
 const fileUpload = require('express-fileupload');
 
-dotenv.config({path: '../.env'});
+dotenv.config({path: '.env'});
 const filePath = process.env.SERVER_CARDFILE_PATH
 const imagePath =  process.env.SERVER_IMAGES_PATH
 
