@@ -56,6 +56,6 @@ jobs:
         strip_components: true
         script: |
           PATH=$PATH:/home/${{secrets.VPS_USER}}/.nvm/versions/node/v21.5.0/bin
-          cd /home/${{ secrets.VPS_USER }}/magic-ninja/backend
+          cd /srv/magic-ninja
           npm install
           pm2 restart "magic-ninja" || pm2 start server.js --name "magic-ninja"
