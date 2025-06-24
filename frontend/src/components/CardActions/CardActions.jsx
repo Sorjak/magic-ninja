@@ -21,6 +21,7 @@ export default function CardActions({cardData, imageFile, save, update, del, edi
     // Now that we have a card ID, upload and associate the image.
     if (imageFile) await uploadImage(newCard.id);
     showMessage('Card created!');
+    navigate('/cards');
   }
 
   async function updateCard() {

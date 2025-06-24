@@ -38,7 +38,7 @@ function Card({cardId=null, incomingCard=null, editable=true}) {
   }
 
   function fileAdded(file) {
-    if (cardData.id) {
+    if (cardData?.id) {
       let filename = file.name.split('.').pop();
       updateCardField('imageUrl', `${cardData.id}.${filename}`);
     }
