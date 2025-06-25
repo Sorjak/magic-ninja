@@ -19,9 +19,9 @@ jobs:
 
     - name: Create env file
       run: |
-        echo "AWS_ACCESS_KEY_ID=${{ vars.AWS_ACCESS_KEY_ID }}" >> backend/.env
-        echo "AWS_SECRET_ACCESS_KEY=${{ vars.AWS_SECRET_ACCESS_KEY }}" >> backend/.env
-        echo "AWS_REGION=${{ vars.AWS_REGION }}" >> backend/.env
+        echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> backend/.env
+        echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> backend/.env
+        echo "AWS_REGION=${{ secrets.AWS_REGION }}" >> backend/.env
         echo "S3_BUCKET_NAME=${{ vars.S3_BUCKET_NAME }}" >> backend/.env
         echo "DIRECTORY_BUCKET_NAME=${{ vars.DIRECTORY_BUCKET_NAME }}" >> backend/.env
         echo "SERVER_PORT=${{ vars.SERVER_PORT }}" >> backend/.env
