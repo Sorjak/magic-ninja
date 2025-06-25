@@ -16,6 +16,7 @@ function Card({cardId=null, incomingCard=null, editable=true}) {
   // Fetch card data from the server if we were only given an ID.
   useEffect(() => {
     async function getCardData() {
+      console.log('fetching card data from Card');
       setCardData(await api.fetchData(`cards/${cardId}`));
     }
 

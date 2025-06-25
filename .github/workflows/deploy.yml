@@ -19,9 +19,12 @@ jobs:
 
     - name: Create env file
       run: |
+        echo "AWS_ACCESS_KEY_ID=${{ vars.AWS_ACCESS_KEY_ID }}" >> .env
+        echo "AWS_SECRET_ACCESS_KEY=${{ vars.AWS_SECRET_ACCESS_KEY }}" >> .env
+        echo "AWS_REGION=${{ vars.AWS_REGION }}" >> .env
+        echo "S3_BUCKET_NAME=${{ vars.S3_BUCKET_NAME }}" >> .env
+        echo "DIRECTORY_BUCKET_NAME=${{ vars.DIRECTORY_BUCKET_NAME }}" >> .env
         echo "SERVER_PORT=${{ vars.SERVER_PORT }}" >> .env
-        echo "SERVER_CARDFILE_PATH=${{ vars.SERVER_CARDFILE_PATH }}" >> .env
-        echo "SERVER_IMAGES_PATH=${{ vars.SERVER_IMAGES_PATH }}" >> .env
         echo "CLIENT_API_PORT=${{ vars.CLIENT_API_PORT }}" >> .env
         echo "CLIENT_API_BASE=${{ vars.CLIENT_API_BASE }}" >> .env
 

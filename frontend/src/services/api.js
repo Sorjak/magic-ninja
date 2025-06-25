@@ -3,6 +3,7 @@
 export default class API {
     BASE_URL = `${import.meta.env.CLIENT_API_BASE}:${import.meta.env.CLIENT_API_PORT}`;
     API_URL = `${this.BASE_URL}/api`
+    IMAGE_URL = `${import.meta.env.CLIENT_IMAGE_URL}`;
 
     async fetchData(path) {
         try {
@@ -33,6 +34,7 @@ export default class API {
                 throw new Error('Got non 200 response');
             }
 
+            console.log(response);
             return await response.json();
     
         } catch (err) {

@@ -23,6 +23,7 @@ function App() {
                 pauseOnFocusLoss={false}
                 draggable={false}
                 pauseOnHover={false}
+                hideProgressBar={true}
                 theme="dark"
             />
         </div>
