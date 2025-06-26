@@ -11,9 +11,8 @@ dotenv.config({path: '.env'});
 const app = express();
 
 app.use(express.static(path.join(__dirname, './dist')));
-app.use('/images', express.static(path.join(__dirname, 'images')));
 
-app.use(cors());
+app.use(cors({origin: '*'}));
 app.use(express.json());
 app.use(fileUpload());
 

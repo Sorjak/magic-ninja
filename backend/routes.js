@@ -1,4 +1,5 @@
-ctrl = require('./controllers');
+const path = require("path");
+const ctrl = require('./controllers');
 
 module.exports = function(app){
 
