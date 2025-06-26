@@ -27,6 +27,7 @@ jobs:
         echo "SERVER_PORT=${{ vars.SERVER_PORT }}" >> backend/.env
         echo "CLIENT_API_PORT=${{ vars.CLIENT_API_PORT }}" >> backend/.env
         echo "CLIENT_API_BASE=${{ vars.CLIENT_API_BASE }}" >> backend/.env
+        echo "CLIENT_IMAGE_URL=${{ vars.CLIENT_IMAGE_URL }}" >> backend/.env
 
     - name: 📦 Install frontend dependencies
       working-directory: ./frontend
