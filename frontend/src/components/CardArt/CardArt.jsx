@@ -1,11 +1,19 @@
 import { useState } from "react";
 
 import './CardArt.css';
+import artPlaceholder from '../../assets/upload-card-art.png';
 import API from "../../services/api";
 
 export default function CardArt({cardData, editable, onFileAdd}) {
   const api = new API();
-  const [imageSrc, setImageSrc] = useState(`${api.IMAGE_URL}/${cardData?.imageUrl}`);
+  const [imageSrc, setImageSrc] = useState(getImageSrc());
+
+  function getImageSrc() {
+    const imageUrl = cardData?.imageUrl;
+    if (imageUrl) return `${api.IMAGE_URL}/${imageUrl}`;
+
+    return artPlaceholder;
+  }
 
   async function handleFileChange(e) {
     const file = e.target.files[0];

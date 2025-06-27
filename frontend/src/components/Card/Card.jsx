@@ -48,7 +48,7 @@ function Card({cardId=null, incomingCard=null, editable=true}) {
   
   return (
     <div className="card-container">
-      <div className={editable ? "card editing" : "card"}>
+      <div className={`card ${editable ? "editing" : ""}`}>
         <div className="card-top">
           <input type="text" className="card-name" name="name" placeholder="Card Name" 
             defaultValue={cardData?.name} readOnly={!editable} onChange={e => handleOnChange(e)}/> 
