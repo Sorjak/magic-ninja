@@ -4,6 +4,7 @@ import AppRoutes from './routes.jsx';
 import { ToastContainer } from 'react-toastify';
 
 import './App.css';
+import { UserProvider } from './contexts/UserContext.jsx';
 
 function App() {
     return (
@@ -15,7 +16,9 @@ function App() {
                 <NavLink end className='nav-link' to="/card">New Card</NavLink>
                {/* <NavLink to="/card/:id">Edit Card</NavLink> */}
             </nav>
-            <AppRoutes />
+            <UserProvider>
+                <AppRoutes />
+            </UserProvider>
             <ToastContainer
                 position="bottom-center"
                 autoClose={1500}
