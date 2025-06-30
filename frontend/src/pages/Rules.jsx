@@ -27,9 +27,11 @@ function Rules() {
         </p>
         <h3>Standard Attack</h3>
         <p>A Standard Attack may be made without calling anything out and as soon as the previous player ends their turn. 
-          Attacks may only be made with something tagged as "lethal".
+          The Standard Attack does not necessarily have to be an attack, the player is free to move in any way they like - as long as it is one continuous movement. 
+          The Arbiter will decide if the player's movement is reasonable.
         </p>
-        <p>Players begin play with all of their hands marked as "lethal".
+        <p>The only way to cause damage during the Standard Attack is with something tagged as "lethal". 
+          Players begin play with all of their hands marked as "lethal".
           Performing a Standard Attack prevents a player from also casting a spell on their turn.
         </p>
         <h3>Cast a Spell</h3>
