@@ -5,6 +5,7 @@ import EditCard from './pages/EditCard.jsx';
 import Cards from './pages/Cards.jsx';
 import About from './pages/About.jsx';
 import Rules from './pages/Rules.jsx';
+import Admin from './pages/Admin.jsx';
 
 export default function AppRoutes() {
     return (
@@ -14,6 +15,7 @@ export default function AppRoutes() {
             <Route exact path="/cards" element={<Cards />} />
             <Route exact path="/card" element={<NewCard />} />
             <Route path="/card/:cardId" element={<EditCard />} />            
+            <Route exact path="/admin" element={<Admin />} />
         </Routes>
     )
 }

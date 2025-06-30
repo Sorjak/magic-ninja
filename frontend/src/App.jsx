@@ -4,9 +4,23 @@ import AppRoutes from './routes.jsx';
 import { ToastContainer } from 'react-toastify';
 
 import './App.css';
-import { UserProvider } from './contexts/UserContext.jsx';
+import { UserContext } from './contexts/UserContext.jsx';
+import { useLocalStorage } from './hooks/LocalStorage.jsx';
+import { useEffect, useState } from 'react';
 
 function App() {
+    const { getItem, setItem } = useLocalStorage();
+    const [ isAdmin, setIsAdmin ] = useState(false);
+
+    const storeAdmin = (value) => { 
+        setItem('isAdmin', value);
+
+    }
+
+    useEffect(() => {
+        setIsAdmin(getItem('isAdmin') === 'true');
+    });
+
     return (
         <div id="app">
             <nav className='main-nav'>
@@ -14,11 +28,10 @@ function App() {
                 <NavLink end className='nav-link' to="/rules">Rules</NavLink> | 
                 <NavLink end className='nav-link' to="/cards">View Cards</NavLink> | 
                 <NavLink end className='nav-link' to="/card">New Card</NavLink>
-               {/* <NavLink to="/card/:id">Edit Card</NavLink> */}
             </nav>
-            <UserProvider>
+            <UserContext.Provider value={{ isAdmin, storeAdmin }}>
                 <AppRoutes />
-            </UserProvider>
+            </UserContext.Provider>
             <ToastContainer
                 position="bottom-center"
                 autoClose={1500}

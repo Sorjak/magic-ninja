@@ -3,7 +3,7 @@ const ctrl = require('./controllers');
 
 module.exports = function(app){
 
-    app.get([/^\/card(.*)/, '/rules', '/about'], async (req, res) => {
+    app.get([/^(?!\/api).*/], async (req, res) => {
         res.sendFile(path.join(__dirname, './dist', 'index.html'));
     });
 

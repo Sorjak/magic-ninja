@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { toast } from 'react-toastify';
 
+import { UserContext } from '../../contexts/UserContext';
 import API from '../../services/api.js';
 
 import './CardActions.css';
@@ -10,6 +11,7 @@ import './CardActions.css';
 export default function CardActions({cardData, imageFile, save, update, del, edit}) {
   const api = new API()
   const navigate = useNavigate();
+  const { isAdmin, storeAdmin } = useContext(UserContext);
 
   const [loading, setLoading] = useState(false);
 
@@ -80,7 +82,7 @@ export default function CardActions({cardData, imageFile, save, update, del, edi
     <div className={`card-actions ${loading ? 'loading' : ''}`}>
         { save && <button className="card-button save-button" onClick={createCard}>Create Card</button> }
         { update && <button className="card-button update-button" onClick={updateCard}>Update Card</button> }
-        { del && <button className="card-button delete-button" onClick={deleteCard}>Delete Card</button> }
+        { del && isAdmin && <button className="card-button delete-button" onClick={deleteCard}>Delete Card</button> }
         { edit && <button className="card-button edit-button" onClick={editCard}>Edit Card</button> }
     </div>
   )
