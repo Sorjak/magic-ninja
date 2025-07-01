@@ -17,10 +17,12 @@ function Rules() {
         <h2>Combat</h2>
         <p>Each player will take a turn, starting with the first player and going clockwise. 
           On their turn, a player may perform one of the following actions:
-          <ul>
-            <li>Standard Move.</li>
-            <li>Cast a spell.</li>
-          </ul>
+        </p>
+        <ul>
+          <li>Standard Move.</li>
+          <li>Cast a spell.</li>
+        </ul>
+        <p>
           Players continue to take turns until only one player remains.
         </p>
         <h3>Standard Move</h3>
@@ -56,17 +58,15 @@ function Rules() {
           If a player has 0 HP, they have lost and must exit the battlefield. 
         </p>
         <h2>Keywords</h2>
-        <p>
-          <ul>
-            <li><strong>Lethal</strong>: A body part, an item, or a construct that is able to deal HP damage after striking a "fragile" target.</li>
-            <li><strong>Fragile</strong>: A body part, an item, or a construct that loses one (1) HP upon being struck by something "lethal".</li>
-            <li><strong>Swift</strong>: A spell that still allows a player to perform their Standard Move on their turn.</li>
-            <li><strong>Construct</strong>: Any item that is conjured by a player during battle.</li>
-            <li><strong>Grimoire</strong>: The set of active spells that a player has brought into the battle.</li>
-            <li><strong>Interrupt</strong>: A spell or effect that stops all play to perform its action.</li>
-            <li><strong>Trap</strong>: A spell that is not revealed when cast, and may interrupt play when its conditions are met.</li>
-          </ul>
-        </p>
+        <ul>
+          <li><strong>Lethal</strong>: A body part, an item, or a construct that is able to deal HP damage after striking a "fragile" target.</li>
+          <li><strong>Fragile</strong>: A body part, an item, or a construct that loses one (1) HP upon being struck by something "lethal".</li>
+          <li><strong>Swift</strong>: A spell that still allows a player to perform their Standard Move on their turn.</li>
+          <li><strong>Construct</strong>: Any item that is conjured by a player during battle.</li>
+          <li><strong>Grimoire</strong>: The set of active spells that a player has brought into the battle.</li>
+          <li><strong>Interrupt</strong>: A spell or effect that stops all play to perform its action.</li>
+          <li><strong>Trap</strong>: A spell that is not revealed when cast, and may interrupt play when its conditions are met.</li>
+        </ul>
     </div>
   )
 }

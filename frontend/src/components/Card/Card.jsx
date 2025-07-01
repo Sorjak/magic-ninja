@@ -70,10 +70,8 @@ function Card({cardId=null, incomingCard=null, editable=true}) {
         <CardActions
           cardData={cardData}
           imageFile={imageFile}
-          save={isNewCard && editable} 
-          update={!isNewCard && editable}
-          del={!isNewCard && editable}
-          edit={!editable} 
+          isNewCard={isNewCard}
+          editable={editable}
         />
         
       </div>

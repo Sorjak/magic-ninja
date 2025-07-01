@@ -8,12 +8,19 @@ import API from '../../services/api.js';
 
 import './CardActions.css';
 
-export default function CardActions({cardData, imageFile, save, update, del, edit}) {
+export default function CardActions({cardData, imageFile, isNewCard, editable}) {
   const api = new API()
   const navigate = useNavigate();
   const { isAdmin, storeAdmin } = useContext(UserContext);
 
   const [loading, setLoading] = useState(false);
+  const save = isNewCard && editable;
+
+  const approve = !isNewCard && isAdmin && !cardData?.approved;
+  const update = !isNewCard && editable;
+  const del = !isNewCard && isAdmin && editable ;
+
+  const edit = !editable;
 
   // CRUD functions to create, update and delete cards.
   async function createCard() {
@@ -63,6 +70,18 @@ export default function CardActions({cardData, imageFile, save, update, del, edi
     navigate(`/card/${cardData.id}`)
   }
 
+  async function approveCard() {
+    if (cardData == null || loading) return;
+
+    setLoading(true);
+
+    let json_body = JSON.stringify({approved: true});
+    await api.pushData(`cards/${cardData.id}`, 'PUT', json_body);
+  
+    showMessage('Card approved!');
+    setLoading(false);
+  }
+
   async function uploadImage(uploadId) {
     if (!uploadId) return;
 
@@ -81,8 +100,11 @@ export default function CardActions({cardData, imageFile, save, update, del, edi
   return (
     <div className={`card-actions ${loading ? 'loading' : ''}`}>
         { save && <button className="card-button save-button" onClick={createCard}>Create Card</button> }
+
+        { approve && <button className="card-button approve-button" onClick={approveCard}>Approve Card</button> }
         { update && <button className="card-button update-button" onClick={updateCard}>Update Card</button> }
-        { del && isAdmin && <button className="card-button delete-button" onClick={deleteCard}>Delete Card</button> }
+        { del && <button className="card-button delete-button" onClick={deleteCard}>Delete Card</button> }
+        
         { edit && <button className="card-button edit-button" onClick={editCard}>Edit Card</button> }
     </div>
   )
