@@ -1,13 +1,14 @@
 
 
 export default class API {
-    BASE_URL = `${import.meta.env.CLIENT_API_BASE}:${import.meta.env.CLIENT_API_PORT}`;
+    BASE_URL = `${import.meta.env.VITE_API_BASE}:${import.meta.env.VITE_API_PORT}`;
     API_URL = `${this.BASE_URL}/api`
-    IMAGE_URL = `${import.meta.env.CLIENT_IMAGE_URL}`;
+    IMAGE_URL = `${import.meta.env.VITE_IMAGE_URL}`;
 
     async fetchData(path) {
         try {
             const uri = `${this.API_URL}/${path}`;
+
             const response = await fetch(uri);
             if (!response.ok) {
                 throw new Error('Got non 200 response');

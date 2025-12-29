@@ -20,8 +20,8 @@ require('./routes')(app);
 
 app.listen(process.env.SERVER_PORT, async () => {
   console.log("Server is up on port: ", process.env.SERVER_PORT);
-  console.log("Using: ", process.env.CLIENT_API_BASE);
-  console.log("Using: ", process.env.CLIENT_API_PORT);
+  console.log("Using: ", process.env.VITE_API_BASE);
+  console.log("Using: ", process.env.VITE_API_PORT);
   console.log("Using: ", process.env.S3_BUCKET_NAME);
   console.log("Using: ", process.env.DIRECTORY_BUCKET_NAME);
 });
