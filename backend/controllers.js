@@ -43,6 +43,7 @@ const getCard = async (itemId) => {
                 Key: `${itemId}.json`
             })
         );
+        console.log(`Fetched item with id ${itemId}`);
         return JSON.parse(await result.Body.transformToString());
 
     } catch (NoSuchKey) {
