@@ -1,0 +1,6 @@
+apiVersion: v2
+name: Magic Ninja
+description: A Helm chart Magic Ninja
+type: application
+version: 0.1.0
+appVersion: "1.16.0"
