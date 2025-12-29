@@ -1,5 +1,5 @@
 apiVersion: v2
-name: Magic Ninja
+name: magic-ninja
 description: A Helm chart Magic Ninja
 type: application
 version: 0.1.0
