@@ -1,7 +1,7 @@
 service:
   port: 80
   targetPort: 3001
-  type: ClusterIP
+  type: NodePort
   host: mage.ulicon.com
 
 env:
