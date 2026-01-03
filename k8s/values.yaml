@@ -1,0 +1,13 @@
+service:
+  port: 80
+  targetPort: 3001
+  type: ClusterIP
+  host: mage.ulicon.com
+
+env:
+  - name: SERVER_PORT
+    value: "3001"
+  - name: S3_BUCKET_NAME
+    value: magic-ninja
+  - name: DIRECTORY_BUCKET_NAME
+    value: magic-ninja--use1-az6--x-s3
