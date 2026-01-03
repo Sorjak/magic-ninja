@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: "{{ .Chart.name }}-ingress"
+  name: "{{ .Values.name }}-ingress"
 spec:
   ingressClassName: traefik
   rules:
@@ -12,6 +12,6 @@ spec:
         pathType: Prefix # Can be Prefix, Exact, or ImplementationSpecific
         backend:
           service:
-            name: "{{ .Chart.name }}-service" # Name of the Service defined above
+            name: "{{ .Values.name }}-service" # Name of the Service defined above
             port:
               number: {{ .Values.service.port }} # Port exposed by the Service

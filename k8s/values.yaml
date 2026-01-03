@@ -1,3 +1,5 @@
+name: magic-ninja
+
 service:
   port: 80
   targetPort: 3001
