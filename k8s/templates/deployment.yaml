@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: "{{ .Values.name }}-container"
-        image: ghcr.io/Sorjak/magic-ninja:latest
+        image: ghcr.io/sorjak/magic-ninja:latest
         ports:
         - containerPort: {{ .Values.service.targetPort }}
       imagePullSecrets:
