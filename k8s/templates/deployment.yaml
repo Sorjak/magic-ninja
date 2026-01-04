@@ -18,10 +18,10 @@ spec:
         ports:
         - containerPort: {{ .Values.service.targetPort }}
         env:
-        {{- range $name, $value := .Values.env }}
-        - name: {{ $name }}
-          value: {{ $value }}
-        {{- end }}
+          {{- range $key, $value := $.Values.env }}
+          - name: {{ $key }}
+            value: {{ $value | quote }}
+          {{- end }}
         envFrom:
         - secretRef:
             name: magic-ninja-secrets

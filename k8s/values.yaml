@@ -7,9 +7,6 @@ service:
   host: mage.ulicon.com
 
 env:
-  - name: SERVER_PORT
-    value: "3001"
-  - name: S3_BUCKET_NAME
-    value: magic-ninja
-  - name: DIRECTORY_BUCKET_NAME
-    value: magic-ninja--use1-az6--x-s3
+  SERVER_PORT: "3001"
+  S3_BUCKET_NAME: "magic-ninja"
+  DIRECTORY_BUCKET_NAME: "magic-ninja--use1-az6--x-s3"
