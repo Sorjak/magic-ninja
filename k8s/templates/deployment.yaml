@@ -17,5 +17,13 @@ spec:
         image: ghcr.io/sorjak/magic-ninja:latest
         ports:
         - containerPort: {{ .Values.service.targetPort }}
+        env:
+        {{- range $name, $value := .Values.env }}
+        - name: {{ $name }}
+          value: {{ $value }}
+        {{- end }}
+        envFrom:
+        - secretRef:
+            name: magic-ninja-secrets
       imagePullSecrets:
       - name: ghcr-login-secret
