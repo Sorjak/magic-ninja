@@ -2,6 +2,10 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: "{{ .Values.name }}-ingress"
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls.certresolver: default
 spec:
   ingressClassName: traefik
   rules:
@@ -15,3 +19,6 @@ spec:
             name: "{{ .Values.name }}-service" # Name of the Service defined above
             port:
               number: {{ .Values.service.port }} # Port exposed by the Service
+  tls:
+  - hosts:
+    - {{ .Values.service.host }} # Replace with your desired domain name
