@@ -32,6 +32,10 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/sorjak/magic-ninja:${{ github.sha }}
+          build-args: |
+            VITE_API_BASE=${{ vars.CLIENT_API_BASE }}
+            VITE_API_PORT=${{ vars.CLIENT_API_PORT }}
+            VITE_IMAGE_URL=${{ vars.CLIENT_IMAGE_URL }}
 
       - name: Update values.yaml
         uses: fjogeleit/yaml-update-action@main
