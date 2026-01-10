@@ -4,7 +4,7 @@ service:
   targetPort: 3001
   type: NodePort
   host: mage.ulicon.com
-  tag: 30158109cf49d63d1b63c4dbbfaa331059764004
+  tag: 1b68d103ce9350e49f2f39e5ff53d12ca7f9e3ae
   image: ghcr.io/sorjak/magic-ninja
 env:
   SERVER_PORT: '3001'
