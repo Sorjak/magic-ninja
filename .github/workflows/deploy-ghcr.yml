@@ -3,7 +3,7 @@ name: Build and Push Docker Image to GHCR
 on:
   push:
     branches:
-      - main # Triggers the workflow on pushes to the develop branch
+      - main # Triggers the workflow on pushes to the main branch
 
 jobs:
   build-and-push:
@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          path: source-repo
 
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
@@ -29,25 +31,40 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
         with:
-          context: .
+          context: ./source-repo
           push: true
-          tags: ghcr.io/sorjak/magic-ninja:${{ github.sha }}
+          tags: ghcr.io/sorjak/${{ github.event.repository.name }}:${{ github.sha }}
           build-args: |
             VITE_API_BASE=${{ vars.CLIENT_API_BASE }}
             VITE_API_PORT=${{ vars.CLIENT_API_PORT }}
             VITE_IMAGE_URL=${{ vars.CLIENT_IMAGE_URL }}
 
-      - name: Update values.yaml
+      - name: Update values.yaml in source repo
         uses: fjogeleit/yaml-update-action@main
         with:
-          valueFile: 'k8s/values.yaml'
+          valueFile: 'source-repo/k8s/values.yaml'
           propertyPath: 'service.tag'
           value: ${{ github.sha }}
           commitChange: false
-          message: 'Update Image Version to ${{ github.sha }}'
 
-      # Commit all changed files back to the repository
-      - uses: stefanzweifel/git-auto-commit-action@v7
+      - name: Checkout the destination repo (Ninetales ArgoCD)
+        uses: actions/checkout@v4
         with:
-          commit_message: 'Update Image Version to ${{ github.sha }}'
-          branch: main
+          repository: ${{ github.repository_owner }}/ninetales-argocd
+          token: ${{ secrets.ACTIONS_PAT }}
+          path: ninetales-argocd
+
+      - name: Copy Changes from source to destination repo
+        run: |
+          mkdir -p ninetales-argocd/${GITHUB_REPOSITORY#*/}
+          rm -rf ninetales-argocd/${GITHUB_REPOSITORY#*/}/*
+          cp -r source-repo/k8s/* ninetales-argocd/${GITHUB_REPOSITORY#*/}
+
+      - name: Commit and Push using Git commands
+        run: |
+          cd ninetales-argocd
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Automated update $GITHUB_SHA from $GITHUB_REPOSITORY"
+          git push
